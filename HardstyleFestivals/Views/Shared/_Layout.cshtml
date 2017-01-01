@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <title>@ViewBag.Title - My ASP.NET Application</title>      
+    @Styles.Render("~/Content/css") 
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("ViewSpecificStyles", false)
 
 </head>
 <body>
@@ -37,8 +38,11 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/lib")
+
+    @*if there is a "ViewSpecificScripts" section in the a view, then the javascript in that section will be rendered at this
+        place in the layout page. So that section can be used for javascript that must be applied to a page but not to all pages.
+        (for example the client side validation bundle)*@
+    @RenderSection("ViewSpecificScripts", required: false)
 </body>
 </html>

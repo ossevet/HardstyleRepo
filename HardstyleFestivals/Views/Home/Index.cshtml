@@ -1,31 +1,100 @@
-﻿@{
+﻿@model HardstyleFestivals.ViewModels.FestivalsListViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
-    <p class="lead">Hardstyle Festivals</p>
+    <p class="lead">Hardstyle Festivals Knallen</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+@if (Model.lstFestivals.Count() == 0)
+{
+    <p>no festivals in the DB</p>
+}
+else
+{
+    <ul>
+        @foreach (var festival in Model.lstFestivals)
+        {
+            //make link to festivals/edit/id so we can edit this festival (if we want)
+            <li>@Html.ActionLink(festival.Naam, "Edit", "Festivals", new { id = festival.Id }, null)</li>
+
+        }
+    </ul>
+    
+    
+    <table id="Festivals" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Festival</th>
+                <th>ServiceProvider</th>
+                <th>Delete</th>       
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var festival in Model.lstFestivals)
+            {
+                <tr>                    
+                    <td>@Html.ActionLink(festival.Naam, "Edit", "Festivals", new { id = festival.Id }, null)</td>
+                    <td>@festival.ServiceProvider.Naam </td>
+                    <td><button data-festival-id ="@festival.Id" class="btn btn-link js-delete">delete</button></td>
+                </tr>
+            }
+
+
+        </tbody>
+
+
+
+    </table>
+    @Html.ActionLink("Klik hier om een nieuw festival te maken", "New", "Festivals")
+}
+
+@section ViewSpecificScripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //Koppel "datatables" functionaliteit aan de festivals tabel.
+            //Wat er nu in feite gebeurt is dat de "datatables" library de gegevens uit de (op de server gemaakte) html gaat halen
+            //en dan als raw data in zijn geheugen stopt, en daar gaat hij dan weer een "Datatables" tabel van maken.
+            //Als je de server gelijk al raw data terug laat geven bespaar je de server werk en zal alles dus sneller gaan.
+            //We hebben daarvoor onze festivals API beschikbaar. Kijk op de festivals/index view hoe we die gebruiken.
+            $("#Festivals").DataTable();
+
+
+            //in tabel Festivals voor alle "js-delete" elementen, maak een onclick funtie
+            $("#Festivals .js-delete").on("click", function () {
+                var buttonClicked = $(this);
+
+                    //if (confirm("wil je festival deleten?")) {
+                    //    $.ajax...                
+                    //}
+                    //nee, bootbox geeft een veel mooiere dialog window dus die gebruiken we:
+                    bootbox.confirm("wil je festival deleten?", function (result) {
+                        if (result)
+                        {
+                            //gebruik de API om het festival te deleten.
+                            //Geef id mee, haal die op uit de zelfgemaakte attribute in de button
+                            $.ajax({
+                                url: "/api/festivals/" + buttonClicked.attr("data-festival-id"),
+                                method: "DELETE",
+                                succes: function () {
+                                    conslole.log("knallen, het deleten is gelukt")
+                                    //het record is uit de DB verwijderd, maar staat nog wel in de tabel
+                                    //Verwijder de regel waari geklikt is uit de tabel (via de geklikte button):
+                                    buttonClicked.parents("tr").remove();
+                                }
+                            });
+                        }
+                    })
+
+            });
+        });
+    </script>
+
+}

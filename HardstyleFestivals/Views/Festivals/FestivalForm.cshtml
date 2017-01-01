@@ -1,0 +1,102 @@
+﻿@model HardstyleFestivals.ViewModels.FestivalFormViewModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Festival</h2>
+
+@*//create open and closing form tags*@
+@using (Html.BeginForm("Save", "Festivals"))  //bij het submitten van dit form wordt actionresult "Save" aangeroepen op de controller
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Festival.Naam, new { @class = "groenetekst" })
+        @Html.TextBoxFor(m => m.Festival.Naam, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Festival.Naam )
+    </div>
+    <div class="form-group">
+        <label class="groenetekst" for="NaamDesc">Naam evenement (volledig)</label>
+        @Html.TextBoxFor(m => m.Festival.NaamDesc, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Festival.Datum)
+        @Html.TextBoxFor(m => m.Festival.Datum, "{0:d-MM-yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Festival.Datum)
+    </div>
+    <div class="form-group">
+        <label for="Website">URL van evenement website</label>
+        @Html.TextBoxFor(m => m.Festival.Website, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="TicketsURL">URL van ticketverkoop pagina</label>
+        @Html.TextBoxFor(m => m.Festival.TicketsURL, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="PrijsEarly">Early prijs (indien van toepassing)</label>
+        @Html.TextBoxFor(m => m.Festival.PrijsEarly, new { @class = "form-control" })       
+    </div>
+    <div class="form-group">
+        <label for="PrijsLate">(Late) Prijs</label>
+        @Html.TextBoxFor(m => m.Festival.PrijsLate, new { @class = "form-control" })       
+    </div>
+
+
+    //dit moet een dropdownlist worden
+    <div class="form-group">
+        @Html.LabelFor(m => m.Festival.ServiceProviderId)
+        @Html.DropDownListFor(m => m.Festival.ServiceProviderId, //dit is de waarde die opgeslagen moet worden in de festivaltabel 
+                                   new SelectList(Model.ServiceProviders, "Id", "Naam"), //dit is de lijst met values en texts die in de dropdownlist komt
+                                   "kies provider",
+                                   new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Festival.ServiceProvider)
+    </div>
+
+
+    <div class="form-group">
+        <label for="KostService">Service kosten va ticketprovider</label>
+        @Html.TextBoxFor(m => m.Festival.KostService, new { @class = "form-control" })       
+    </div>
+    <div class="form-group">
+        <label for="KostBetaling">Kosten van ideal betaling</label>
+        @Html.TextBoxFor(m => m.Festival.KostBetaling, new { @class = "form-control" })        
+    </div>
+    <div class="form-group">
+        <label for="YoutubeCode">Youtube code (de code van cijfers en letters aan het einde van de url van een youtube filmpje)</label>
+        @Html.TextBoxFor(m => m.Festival.YoutubeCode, new { @class = "form-control" })       
+    </div>
+    <div class="form-group">
+        <label for="Beschrijving">URL van evenement website</label>
+        @Html.TextBoxFor(m => m.Festival.Beschrijving, new { @class = "form-control" })       
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Festival.Muziek)
+        @Html.TextBoxFor(m => m.Festival.Muziek, new { @class = "form-control" })       
+    </div>
+    <div class="form-group">
+        <label for="StartVVK">Start Voorverkoop datum</label>
+        @Html.TextBoxFor(m => m.Festival.StartVVK, new { @class = "form-control" })        
+    </div>
+    
+    
+    //hiddenfield voor de id (die hebben we nodig als we updaten ipv nieuw saven)
+    @Html.TextBoxFor(m => m.Festival.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+
+   
+    //zo voeg je specifieke css toe aan alleen deze pagina (zie _layout.cshtml)
+    @section ViewSpecificStyles {
+    <link href="@Url.Content("~/Content/FestivalFormStyle.css")" rel="stylesheet" type="text/css" />
+    }
+
+
+    //zo voeg je specifieke scripts toe aan alleen deze pagina (zie _layout.cshtml)
+    @section ViewSpecificScripts {
+        @Scripts.Render("~/bundles/jqueryval");
+           
+    }
+
+}
+
+

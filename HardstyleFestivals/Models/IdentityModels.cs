@@ -20,8 +20,28 @@ namespace HardstyleFestivals.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        
+
+        //voeg hier dbSets toe van je classes in je Models directory. Dan worden er Tabellen van gemaakt in de DB
+        public DbSet<Festival> Festivals { get; set; }
+        public DbSet<ServiceProvider> ServiceProviders { get; set; }
+
+
+      
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+           modelBuilder.Entity<Festival>().Property(x => x.PrijsEarly).HasPrecision(18, 2);
+           //modelBuilder.Entity<Festival>().Property(object => object.PrijsLate).HasPrecision(18, 2);
+           //modelBuilder.Entity<Festival>().Property(object => object.KostService).HasPrecision(18, 2);
+           //modelBuilder.Entity<Festival>().Property(object => object.KostBetaling).HasPrecision(18, 2);
+
+           base.OnModelCreating(modelBuilder);
+        }
+
+
+
+        public ApplicationDbContext()  //geef hier de naam op van je connectiestring die je in je webconfig hebt staan (om connectie te maken met je externe DB)
+            : base("SQLServerConnectionToHardstyleDB", throwIfV1Schema: false)
         {
         }
 
