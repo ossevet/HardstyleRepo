@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HardstyleFestivals.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HardstyleFestivals.Controllers
 {
@@ -155,6 +156,18 @@ namespace HardstyleFestivals.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    ////tijdelijke code om een nieuwe user automatisch een soort "admin" rol te geven
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageFestivals"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageFestivals");
+
+                    //wat hierboven gebeurt is eigenlijk: 
+                    //-er wordt een nieuw record aangemaakt in de "AspNetRoles" tabel, met naam = "CanManageFestivals". Het is goed om rolen te benoemen met wat ze kunnen in plaats van "WinkelBaas" of iets dergelijks
+                    //-in de tabel "AspNetUserRoles" wordt een record aangemaakt die de inloggende user koppelt aan de zojuist gemaakte rol "CanManageFestivals".
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

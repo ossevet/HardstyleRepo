@@ -35,7 +35,7 @@ namespace HardstyleFestivals
             //in de header van _layout.cshtml wordt dit gezet: @Styles.Render("~/Content/css") 
             //Daarmee worden alle onderstaande css files gelinkt in de header van _layout.cshtml
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap-cyborg.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/Site.css"));
         }

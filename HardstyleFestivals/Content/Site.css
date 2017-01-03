@@ -1,6 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+
+    background-image: url(/Content/Images/Qlimax14Kleiner.jpg);
+background-repeat:no-repeat;
+background-size:cover;
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -34,5 +39,6 @@ select,
 textarea {
     max-width: 280px;
 }
+
 
 

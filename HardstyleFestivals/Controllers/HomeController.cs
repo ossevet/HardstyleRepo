@@ -34,6 +34,7 @@ namespace HardstyleFestivals.Controllers
             return View(vm);
         }
 
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -41,6 +42,7 @@ namespace HardstyleFestivals.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

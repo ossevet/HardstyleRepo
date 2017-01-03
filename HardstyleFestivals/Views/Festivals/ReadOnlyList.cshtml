@@ -1,0 +1,49 @@
+﻿@model HardstyleFestivals.ViewModels.FestivalsListViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lijst van Hardstyle Festivals. Opgehaald via viewModel, niet editable</h2>
+
+
+
+<table id="Festivals" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Festival</th>
+            <th>ServiceProvider</th>           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var festival in Model.lstFestivals)
+        {
+            <tr>
+                <td>@festival.Naam</td>
+                <td>@festival.ServiceProvider.Naam </td>               
+            </tr>
+        }
+
+
+    </tbody>
+
+
+
+</table>
+
+
+
+
+@section ViewSpecificScripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //Koppel "datatables" functionaliteit aan de festivals tabel.            
+            $("#Festivals").DataTable();            
+        
+        });
+    </script>
+
+}
+
