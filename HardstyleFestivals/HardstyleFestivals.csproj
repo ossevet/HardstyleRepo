@@ -227,6 +227,14 @@
     <Compile Include="Migrations\201701012201387_updateSeedMethodToAddServiceProviderIds.Designer.cs">
       <DependentUpon>201701012201387_updateSeedMethodToAddServiceProviderIds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701052246299_AddLocatieToFestivalModel.cs" />
+    <Compile Include="Migrations\201701052246299_AddLocatieToFestivalModel.Designer.cs">
+      <DependentUpon>201701052246299_AddLocatieToFestivalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701102324160_ChangedSeedData.cs" />
+    <Compile Include="Migrations\201701102324160_ChangedSeedData.Designer.cs">
+      <DependentUpon>201701102324160_ChangedSeedData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Festival.cs" />
@@ -364,6 +372,25 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="fonts\Whicker\Webfonts\Whicker-Bonus.eot" />
+    <Content Include="fonts\Whicker\Webfonts\Whicker-Bonus.woff" />
+    <Content Include="fonts\Whicker\Webfonts\Whicker-Regular.eot" />
+    <Content Include="fonts\Whicker\Webfonts\Whicker-Regular.woff" />
+    <Content Include="fonts\Whicker\WhickerBonusTC.otf" />
+    <Content Include="fonts\Whicker\WhickerBonusTC.ttf" />
+    <Content Include="fonts\Whicker\WhickerTC.otf" />
+    <Content Include="fonts\Whicker\WhickerTC.ttf" />
+    <Content Include="fonts\Absolute-Regular.woff" />
+    <Content Include="fonts\FiveBoroughs-Regular.woff" />
+    <Content Include="fonts\KickHornet-Bold.woff" />
+    <Content Include="fonts\KickHornet.woff" />
+    <Content Include="fonts\KickHornetSwash.woff" />
+    <Content Include="fonts\Okami.woff" />
+    <Content Include="fonts\ValienteAllCaps.woff" />
+    <Content Include="fonts\ValienteBrushScript.woff" />
+    <Content Include="fonts\ValienteCAPS.woff" />
+    <Content Include="fonts\ValienteCatchword.woff" />
+    <Content Include="fonts\ValienteSwash.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -525,6 +552,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701012201387_updateSeedMethodToAddServiceProviderIds.resx">
       <DependentUpon>201701012201387_updateSeedMethodToAddServiceProviderIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701052246299_AddLocatieToFestivalModel.resx">
+      <DependentUpon>201701052246299_AddLocatieToFestivalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701102324160_ChangedSeedData.resx">
+      <DependentUpon>201701102324160_ChangedSeedData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

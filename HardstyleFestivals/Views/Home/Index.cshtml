@@ -4,63 +4,68 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Hardstyle Festivals</h1>
-    <p class="lead">Algemeen toegankelijke lijst</p>  
+<div class="container">   
+        <div class="row">
+            
+
+            <div class="KickHornet-Bold text-center" style="font-size: 99px"> Hardstyle<br />Festivals</div>
+        </div>
+    
+    
 </div>
 
+    <div class="container body-content" style="padding-top:15px; padding-bottom:15px">
+       
+        @if (Model.lstFestivals.Count() == 0)
+        {
+            <p>no festivals in the DB</p>
+        }
+        else
+        {
 
-@if (Model.lstFestivals.Count() == 0)
+            <table id="Festivals" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Festival</th>
+                        <th>Prijs</th>
+                        <th>ServiceProvider</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var festival in Model.lstFestivals)
+                    {
+                        <tr>
+                            <td><span style="display:none;">@festival.Datum.ToString("yyyyMMdd")</span>@festival.Datum.ToString("dd-MM-yyyy")</td>
+                            <td><a href="@festival.Website">@festival.NaamDesc</a></td>
+                            <td>@festival.PrijsLate</td>
+                            <td>@festival.ServiceProvider.Naam </td>
+                        </tr>
+                    }
+                                       
+
+                </tbody>
+
+
+
+            </table>
+            @Html.ActionLink("Klik hier om een nieuw festival te maken", "New", "Festivals")
+        }
+    </div>
+    @section ViewSpecificScripts
 {
-    <p>no festivals in the DB</p>
-}
-else
-{    
-    
-    <table id="Festivals" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Datum</th>
-                <th>Festival</th>
-                <th>Prijs</th>
-                <th>ServiceProvider</th>                 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var festival in Model.lstFestivals)
-            {
-                <tr>
-                    <td>@festival.Datum.ToString("dd-MM-yyyy")</td>
-                    <td><a href="@festival.Website">@festival.NaamDesc</a></td>
-                    <td>@festival.PrijsLate</td>
-                    <td>@festival.ServiceProvider.Naam </td>
-                </tr>
-            }
+        <script>
+            $(document).ready(function () {
 
-
-        </tbody>
+                //Koppel "datatables" functionaliteit aan de festivals tabel.
+                //Wat er nu in feite gebeurt is dat de "datatables" library de gegevens uit de (op de server gemaakte) html gaat halen
+                //en dan als raw data in zijn geheugen stopt, en daar gaat hij dan weer een "Datatables" tabel van maken.
+                //Als je de server gelijk al raw data terug laat geven bespaar je de server werk en zal alles dus sneller gaan.
+                //We hebben daarvoor onze festivals API beschikbaar. Kijk op de festivals/index view hoe we die gebruiken.
+                $("#Festivals").DataTable();
 
 
 
-    </table>
-    @Html.ActionLink("Klik hier om een nieuw festival te maken", "New", "Festivals")
-}
-
-@section ViewSpecificScripts
-{
-    <script>
-        $(document).ready(function () {
-
-            //Koppel "datatables" functionaliteit aan de festivals tabel.
-            //Wat er nu in feite gebeurt is dat de "datatables" library de gegevens uit de (op de server gemaakte) html gaat halen
-            //en dan als raw data in zijn geheugen stopt, en daar gaat hij dan weer een "Datatables" tabel van maken.
-            //Als je de server gelijk al raw data terug laat geven bespaar je de server werk en zal alles dus sneller gaan.
-            //We hebben daarvoor onze festivals API beschikbaar. Kijk op de festivals/index view hoe we die gebruiken.
-            $("#Festivals").DataTable();
-
-
-          
-        });
-    </script>
-
-}
+            });
+        </script>
+    }

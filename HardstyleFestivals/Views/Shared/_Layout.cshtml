@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Hardstyle-Festivals", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -30,19 +30,21 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Online Party Solutions</p>
-        </footer>
+    <div class="legeruimteboven2">
     </div>
+   
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Online Party Solutions</p>
+            </footer>
+   
 
-    @Scripts.Render("~/bundles/lib")
+        @Scripts.Render("~/bundles/lib")
 
-    @*if there is a "ViewSpecificScripts" section in the a view, then the javascript in that section will be rendered at this
-        place in the layout page. So that section can be used for javascript that must be applied to a page but not to all pages.
-        (for example the client side validation bundle)*@
-    @RenderSection("ViewSpecificScripts", required: false)
+        @*if there is a "ViewSpecificScripts" section in the a view, then the javascript in that section will be rendered at this
+            place in the layout page. So that section can be used for javascript that must be applied to a page but not to all pages.
+            (for example the client side validation bundle)*@
+        @RenderSection("ViewSpecificScripts", required: false)
 </body>
 </html>

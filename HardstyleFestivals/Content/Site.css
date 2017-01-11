@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
 
-    background-image: url(/Content/Images/Qlimax14Kleiner.jpg);
+    background-image: url(/Content/Images/BOA-110.jpg);
 background-repeat:no-repeat;
 background-size:cover;
 
@@ -40,5 +40,138 @@ textarea {
     max-width: 280px;
 }
 
+.legeruimteboven{
+    padding-top:60px;  
+}
+.legeruimteboven2{
+    padding-top:60px;  
+}
+
+.container.body-content{
+    background-color:black;
+        opacity:0.9;
+}
+
+/*.navbar{
+  background-color:rgba(0, 0, 0, 0.00); //zo wordt hij ook doorzichtig bij het uitklappen, dat is niet mooi
+}*/
+
+/*add a number of cool fonts*/
+@font-face {
+    font-family: whickerfamily;
+    src: url(/fonts/Whicker/Webfonts/Whicker-Regular.woff);    
+}
+.fontwhicker {
+    font-family: whickerfamily;
+}
+
+@font-face {
+    font-family: Absolute-Regular;
+    src: url(/fonts/Absolute-Regular.woff);    
+}
+.Absolute-Regular {
+    font-family: Absolute-Regular;
+}
+
+@font-face {
+    font-family: FiveBoroughs-Regular;
+    src: url(/fonts/FiveBoroughs-Regular.woff);    
+}
+.FiveBoroughs-Regular {
+    font-family: FiveBoroughs-Regular;
+}
+
+@font-face {
+    font-family: KickHornet-Bold;
+    src: url(/fonts/KickHornet-Bold.woff);    
+}
+.KickHornet-Bold {
+    font-family: KickHornet-Bold;
+    transform: rotate(-8deg);
+}
+
+@font-face {
+    font-family: KickHornet;
+    src: url(/fonts/KickHornet.woff);    
+}
+.KickHornet {
+    font-family: KickHornet;
+}
+
+@font-face {
+    font-family: KickHornetSwash;
+    src: url(/fonts/KickHornetSwash.woff);    
+}
+.KickHornetSwash {
+    font-family: KickHornetSwash;
+}
+
+@font-face {
+    font-family: Okami;
+    src: url(/fonts/Okami.woff);    
+}
+.Okami {
+    font-family: Okami;
+}
+
+@font-face {
+    font-family: ValienteAllCaps;
+    src: url(/fonts/ValienteAllCaps.woff);    
+}
+.ValienteAllCaps {
+    font-family: ValienteAllCaps;
+}
+
+@font-face {
+    font-family: ValienteBrushScript;
+    src: url(/fonts/ValienteBrushScript.woff);    
+}
+.ValienteBrushScript {
+    font-family: ValienteBrushScript;
+}
+
+@font-face {
+    font-family: ValienteCAPS;
+    src: url(/fonts/ValienteCAPS.woff);    
+}
+.ValienteCAPS {
+    font-family: ValienteCAPS;
+}
+
+@font-face {
+    font-family: ValienteCatchword;
+    src: url(/fonts/ValienteCatchword.woff);    
+}
+.ValienteCatchword {
+    font-family: ValienteCatchword;
+}
+
+@font-face {
+    font-family: ValienteSwash;
+    src: url(/fonts/ValienteSwash.woff);    
+}
+.ValienteSwash {
+    font-family: ValienteSwash;
+}
 
 
+@font-face {
+    font-family: Whicker-Bonus;
+    src: url(/fonts/Whicker-Bonus.woff);    
+}
+.Whicker-Bonus {
+    font-family: Whicker-Bonus;
+}
+
+
+.swashniels {
+    font-family: KickHornetSwash;
+    -moz-font-feature-settings: "swsh";
+    -webkit-font-feature-settings: "swsh";
+    font-feature-settings: "swsh";
+}
+
+/*voor datum sorteren werkend te maken*/
+#data-table span {
+    display:none; 
+}
